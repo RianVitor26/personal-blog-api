@@ -1,12 +1,10 @@
-interface User {
-    name: string,
-    age: number
-}
+import { App } from './app'
+import dotenv from 'dotenv'
+dotenv.config()
 
-function saveUser(user: User) {
-    console.log(user)
-}
-saveUser({
-    name: "Rian Vitor",
-    age: 20
+const PORT = process.env.PORT || 3002
+const app = new App().server
+
+app.listen(PORT, () => {
+    console.info(`Listening on http://localhost:${PORT}`)
 })
