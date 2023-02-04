@@ -1,16 +1,14 @@
 import mongoose from "mongoose";
-import { db } from "./connfigURI";
+import { db } from "./configURI";
 
 class Database {
-    public connection = mongoose.connect('') 
-    constructor() {
-       if (db.uri) {
-         this.connection = mongoose.connect(db.uri, {
-           useNewUrlParser: true,
-           useUnifiedTopology: true,
-         }, console.log("Connection with mongodb estabilished"));
-       }
-    }
+  public connection;
+  constructor() {
+    this.connection = mongoose.connect(
+      `${db.uri}`,
+      (): void => console.log(`Connection with mongoDB established`)
+    );
+  }
 }
 
 export default new Database()

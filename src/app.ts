@@ -11,12 +11,12 @@ export class App {
         this.routes()
     }
 
-    private middlewares() {
+    private middlewares(): void {
         this.server.use(express.json())
         this.server.use(cors())
     }
 
-    routes() {
+    public routes() {
         this.server.use(router)
     }
 }
