@@ -23,6 +23,7 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
+    "ts-prune": "^0.10.3",
     "tsup": "^6.5.0",
     "tsx": "^3.12.2",
     "typescript": "*",
