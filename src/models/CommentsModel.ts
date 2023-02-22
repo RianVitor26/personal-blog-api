@@ -5,9 +5,9 @@ const commentModel = new mongoose.Schema({
     type: String,
     required: true,
   },
-  timestamp: {
+  data: {
     type: Number,
-    default: Date.now,
+    default: Date.now(),
   },
   body: {
     type: String,
