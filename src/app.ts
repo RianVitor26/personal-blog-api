@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import { router } from './routes/clientRoute'
+import { router } from './routes/clientsRoute'
 import './database'
 
 export class App {
