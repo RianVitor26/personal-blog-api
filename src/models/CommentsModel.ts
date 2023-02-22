@@ -12,6 +12,11 @@ const commentModel = new mongoose.Schema({
   body: {
     type: String,
     required: true,
+  },
+  userID: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'UserModel',
+    required: true,
   }
 });
 
