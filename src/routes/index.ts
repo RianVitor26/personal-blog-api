@@ -11,10 +11,10 @@ router.put('/users/:id', usersController.update)
 router.delete('/users/:id', usersController.remove)
 
 
-router.get('/users/:id/comments', commentsController.showAll);
-router.post('/users/:id/comments', commentsController.create);
-router.put('/users/:id/comments/:id', commentsController.update);
-router.delete('/users/:id/comments/:id', commentsController.remove);
+router.get('/users/:user_id/comments', commentsController.showAll);
+router.post('/users/:user_id/comments', commentsController.create);
+router.put('/users/:user_id/comments/:id', commentsController.update);
+router.delete('/users/:user_id/comments/:id', commentsController.remove);
 
 export { router }
 
