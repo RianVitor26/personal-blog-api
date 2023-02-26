@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { UserModel } from '../models/UsersModel';
-import { createPasswordHash } from '../utils/auth';
+import { createPasswordHash } from '../utils/createPasswordHash';
 
 class UsersController {
   public async showAll(req: Request, res: Response) {

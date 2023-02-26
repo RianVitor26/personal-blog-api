@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
-import { router } from './routes'
+import { UsersRoute } from './routes/UsersRoute'
+import { CommentsRoute } from './routes/CommentsRoute'
 import './database'
 
 export class App {
@@ -17,6 +18,6 @@ export class App {
     }
 
     public routes() {
-        this.server.use(router)
+        this.server.use(UsersRoute, CommentsRoute);
     }
 }
