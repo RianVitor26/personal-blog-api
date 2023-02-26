@@ -25,7 +25,9 @@ class CommentsController {
     }
   }
 
-  public async showOne(req: Request, res: Response) {}
+  public async showOne(req: Request, res: Response) {
+
+  }
 
   public async create(req: Request, res: Response) {
     try {
@@ -37,7 +39,7 @@ class CommentsController {
         return res.status(404).json({ message: 'user not found' });
       }
 
-      await CommentModel.create({ author, body, user_id: user._id });
+      await CommentModel.create({ author, body, userID: user._id });
       return res.status(201).json({ message: 'comment created' });
     } catch (error) {
       return res.status(500).json({ error: error });
