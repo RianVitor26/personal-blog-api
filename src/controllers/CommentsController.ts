@@ -25,9 +25,7 @@ class CommentsController {
     }
   }
 
-  public async showOne(req: Request, res: Response) {
-
-  }
+  public async showOne(req: Request, res: Response) {}
 
   public async create(req: Request, res: Response) {
     try {
@@ -46,31 +44,64 @@ class CommentsController {
     }
   }
 
-  public async update(req: Request, res: Response) {}
+  public async update(req: Request, res: Response) {
+    try {
+      const { user_id, id } = req.params;
+      const { author, body } = req.body;
+      const user = await UserModel.findById(user_id);
 
-    public async remove(req: Request, res: Response) {
-      try {
-         const { user_id, id } = req.params;
-         const user = await UserModel.findById(user_id);
-
-         if (!user) {
-           return res.status(404).json({ message: 'user not found' });
-          }
-
-          const comment = await CommentModel.findOne({
-              userID: user_id,
-              _id: id
-          });
-
-          if (!comment) {
-              return res.status(404).json({message: "comment id not found"})
-          }
-          await CommentModel.remove(comment)
-          return res.status(200).json({ message: "comment deleted"})
-          
-      } catch (error) {
-        return res.status(500).json({ error: error });
+      if (!user) {
+        return res.status(404).json({ message: 'user id not found' });
+      } else if (!id) {
+        return res.status(404).json({ message: 'comment id not found' });
+      } else if (!author || !body) {
+        return res.status(422).json();
       }
+
+      const comment = await CommentModel.findOne({
+        userID: user._id,
+        _id: id,
+      });
+
+      if (!comment) {
+        return res.status(422).json({ message: 'failed on update comment' });
+      }
+
+       await CommentModel.updateOne({
+        _id: id,
+        author: author,
+        body: body,
+        userID: user._id,
+      });
+
+      return res.status(200).json({ message: 'comment updated' });
+    } catch (error) {
+      return res.status(500).json({ error: error });
+    }
+  }
+
+  public async remove(req: Request, res: Response) {
+    try {
+      const { user_id, id } = req.params;
+      const user = await UserModel.findById(user_id);
+
+      if (!user) {
+        return res.status(404).json({ message: 'user not found' });
+      }
+
+      const comment = await CommentModel.findOne({
+        userID: user_id,
+        _id: id,
+      });
+
+      if (!comment) {
+        return res.status(404).json({ message: 'comment id not found' });
+      }
+      await CommentModel.remove(comment);
+      return res.status(200).json({ message: 'comment deleted' });
+    } catch (error) {
+      return res.status(500).json({ error: error });
+    }
   }
 }
 
