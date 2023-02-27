@@ -13,7 +13,7 @@ class CommentsController {
       }
 
       const comments = await CommentModel.findOne({
-        user_id: user._id,
+        userID: user._id,
       });
 
       if (!comments) {
