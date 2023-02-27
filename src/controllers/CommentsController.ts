@@ -25,7 +25,39 @@ class CommentsController {
     }
   }
 
-  public async showOne(req: Request, res: Response) {}
+  public async showOne(req: Request, res: Response) {
+    try {
+      const { user_id, id } = req.params
+
+      if (!user_id || !id) {
+        return res.status(404).json({message: 'user id or comment id not found'})
+      }
+
+      const user = await UserModel.findById(user_id)
+
+      if (!user) {
+        return res
+          .status(404)
+          .json({ message: 'user not found' });
+      }
+
+      const comment = await CommentModel.findOne({
+        _id: id,
+        userID: user._id
+      })
+
+      if (!comment) {
+        return res
+          .status(404)
+          .json({ message: 'comment id not found' });
+      }
+
+      return res.status(200).json(comment)
+
+    } catch (error) {
+      return res.status(500).json({ error: error });
+    }
+  }
 
   public async create(req: Request, res: Response) {
     try {
