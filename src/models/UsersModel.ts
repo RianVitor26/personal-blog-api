@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  photo: {
+    type: String,
+    required: false
+  }
 });
 
 export const UserModel = mongoose.model('User', userSchema);
