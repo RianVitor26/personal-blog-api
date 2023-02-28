@@ -8,13 +8,17 @@ const CategoriesSchema = new mongoose.Schema({
   author: {
     type: String,
     ref: 'UserModel',
-    required: false,
+    required: true,
   },
 
   description: {
     type: String,
     require: false,
   },
+  color: {
+    type: String,
+    required: false,
+  }
 });
 
 export const CategoriesModel = mongoose.model('Category', CategoriesSchema);
