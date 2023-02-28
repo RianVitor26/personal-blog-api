@@ -15,8 +15,12 @@ const commentModel = new mongoose.Schema({
   },
   userID: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'UserModel',
+    ref: 'Users',
     required: true,
+  },
+  photo: {
+    type: String,
+    required: false,
   }
 });
 

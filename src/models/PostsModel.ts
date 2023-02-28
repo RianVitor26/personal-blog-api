@@ -8,19 +8,27 @@ const PostSchema = new mongoose.Schema({
 
   content: {
     type: String,
-    required: true,
+    required: true, 
+    maxlenght: 100,
     },
   
   author: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: 'UserModel',
+      ref: 'Users',
   },
   category: {
     type: String,
       required: true,
-      ref: 'CategoryModel',
-    },
+      ref: 'Categories',
+  },
+  tags: {
+    type: [String]
+  },
+  emphasis: {
+    type: Boolean,
+    required: false,
+  }
 });
 
 export const PostModel = mongoose.model('Posts', PostSchema);

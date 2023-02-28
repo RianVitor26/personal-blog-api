@@ -7,7 +7,7 @@ const CategoriesSchema = new mongoose.Schema({
   },
   author: {
     type: String,
-    ref: 'UserModel',
+    ref: 'Users',
     required: true,
   },
 
@@ -21,4 +21,4 @@ const CategoriesSchema = new mongoose.Schema({
   }
 });
 
-export const CategoriesModel = mongoose.model('Category', CategoriesSchema);
+export const CategoriesModel = mongoose.model('Categories', CategoriesSchema);
