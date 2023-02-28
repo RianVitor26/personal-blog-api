@@ -78,37 +78,32 @@ class CommentsController {
 
   public async update(req: Request, res: Response) {
     try {
-      const { user_id, id } = req.params;
+      const { user_id, comment_id } = req.params;
       const { author, body } = req.body;
       const user = await UserModel.findById(user_id);
 
       if (!user) {
-        return res.status(404).json({ message: 'user id not found' });
-      } else if (!id) {
-        return res.status(404).json({ message: 'comment id not found' });
-      } else if (!author || !body) {
-        return res.status(422).json();
+        return res.status(404).json({ message: 'User not found' });
       }
 
       const comment = await CommentModel.findOne({
+        _id: comment_id,
         userID: user._id,
-        _id: id,
       });
 
       if (!comment) {
-        return res.status(422).json({ message: 'failed on update comment' });
+        return res.status(404).json({ message: 'Comment not found' });
       }
 
-       await CommentModel.updateOne({
-        _id: id,
-        author: author,
-        body: body,
-        userID: user._id,
-      });
+      await CommentModel.updateOne(
+        { _id: comment_id, userID: user_id },
+        { author, body }
+      );
 
-      return res.status(200).json({ message: 'comment updated' });
+      return res.status(200).json({ message: 'Comment updated' });
     } catch (error) {
-      return res.status(500).json({ error: error });
+      console.error(error);
+      return res.status(500).json({ message: 'Internal server error' });
     }
   }
 
