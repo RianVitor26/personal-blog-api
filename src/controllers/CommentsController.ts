@@ -27,10 +27,12 @@ class CommentsController {
 
   public async showOne(req: Request, res: Response) {
     try {
-      const { user_id, id } = req.params
+      const { user_id, comment_id } = req.params
 
-      if (!user_id || !id) {
-        return res.status(404).json({message: 'user id or comment id not found'})
+      if (!user_id || !comment_id) {
+        return res
+          .status(404)
+          .json({ message: 'user id or comment id not found' });
       }
 
       const user = await UserModel.findById(user_id)
@@ -42,9 +44,9 @@ class CommentsController {
       }
 
       const comment = await CommentModel.findOne({
-        _id: id,
-        userID: user._id
-      })
+        _id: comment_id,
+        userID: user._id,
+      });
 
       if (!comment) {
         return res
