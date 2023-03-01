@@ -85,7 +85,22 @@ class CategoriesController {
     }
   }
 
-  public async remove(req: Request, res: Response) {}
+  public async remove(req: Request, res: Response) {
+       try {
+         const { id } = req.params;
+         const category = await CategoriesModel.findById(id);
+         if (!category) {
+           return res
+             .status(404)
+             .json({ message: 'category not found' });
+         }
+         await category.delete();
+         return res.status(200).json({ message: 'category deleted' });
+       } catch (err) {
+         res.status(500).json({ message: 'internal server error' });
+         console.log(err);
+       }
+  }
 }
 
 export const categoriesController = new CategoriesController();
