@@ -1,6 +1,4 @@
 import { Request, Response } from 'express';
-import { PostModel } from './../models/PostsModel';
-import { CommentModel } from '../models/CommentsModel';
 import { CategoriesModel } from './../models/CategoriesModel';
 
 class CategoriesController {
@@ -36,24 +34,56 @@ class CategoriesController {
       const { name, description, color } = req.body;
 
       if (!name) {
-        return res.status(422).json()
+        return res.status(422).json();
       }
 
-      const newCategory = await CategoriesModel.create(name, description, color)
+      const newCategory = await CategoriesModel.create(
+        name,
+        description,
+        color
+      );
 
       if (!newCategory) {
-        return res.status(422).json()
+        return res.status(422).json();
       }
 
-      return res.status(201).json(newCategory)
-
+      return res.status(201).json(newCategory);
     } catch (error) {
       res.status(500).json({ message: 'internal server error' });
       console.log(error);
     }
   }
 
-  public async update(req: Request, res: Response) {}
+  public async update(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const { name, description, color } = req.body;
+      if (!id) {
+        return res.status(404).json();
+      }
+
+      if (!name) {
+        return res.status(404).json();
+      }
+      const category = await CategoriesModel.findById(id);
+      if (!category) {
+        return res.status(404).json();
+      }
+      const upadatedCategory = await category.updateOne(
+        name,
+        description,
+        color
+      );
+      if (!upadatedCategory) {
+        return res.status(422).json();
+      }
+
+      return res.status(200).json(upadatedCategory);
+    } catch (error) {
+      res.status(500).json({ message: 'internal server error' });
+      console.log(error);
+    }
+  }
 
   public async remove(req: Request, res: Response) {}
 }
