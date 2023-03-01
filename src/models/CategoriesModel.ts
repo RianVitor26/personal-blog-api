@@ -8,7 +8,7 @@ const CategoriesSchema = new mongoose.Schema({
   author: {
     type: String,
     ref: 'Users',
-    required: true,
+    required: false,
   },
 
   description: {

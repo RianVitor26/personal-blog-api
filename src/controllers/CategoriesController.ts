@@ -3,12 +3,11 @@ import { PostModel } from './../models/PostsModel';
 import { CommentModel } from '../models/CommentsModel';
 import { CategoriesModel } from './../models/CategoriesModel';
 
-
 class CategoriesController {
   public async showAll(req: Request, res: Response) {
     try {
-      const categories = await CategoriesModel.find()
-      if (!categories) return res.status(404).json() 
+      const categories = await CategoriesModel.find();
+      if (!categories) return res.status(404).json();
     } catch (error) {
       res.status(500).json({ message: 'internal server error' });
       console.log(error);
@@ -19,14 +18,13 @@ class CategoriesController {
     try {
       const { id } = req.params;
       if (!id) {
-        return res.status(404).json()
+        return res.status(404).json();
       }
-      const category = await CategoriesModel.findById(id)
+      const category = await CategoriesModel.findById(id);
       if (!category) {
-        return res.status(404).json()
-      } 
-      return res.status(200).json()
-      
+        return res.status(404).json();
+      }
+      return res.status(200).json();
     } catch (error) {
       res.status(500).json({ message: 'internal server error' });
       console.log(error);
@@ -34,16 +32,30 @@ class CategoriesController {
   }
 
   public async create(req: Request, res: Response) {
-    
+    try {
+      const { name, description, color } = req.body;
+
+      if (!name) {
+        return res.status(422).json()
+      }
+
+      const newCategory = await CategoriesModel.create(name, description, color)
+
+      if (!newCategory) {
+        return res.status(422).json()
+      }
+
+      return res.status(201).json(newCategory)
+
+    } catch (error) {
+      res.status(500).json({ message: 'internal server error' });
+      console.log(error);
+    }
   }
 
-  public async update(req: Request, res: Response) {
-    
-  }
+  public async update(req: Request, res: Response) {}
 
-  public async remove(req: Request, res: Response) {
-    
-  }
+  public async remove(req: Request, res: Response) {}
 }
 
 export const categoriesController = new CategoriesController();
