@@ -64,14 +64,14 @@ class CommentsController {
   public async create(req: Request, res: Response) {
     try {
       const { user_id } = req.params;
-      const { author, body } = req.body;
+      const { author, body, photo } = req.body;
       const user = await UserModel.findById(user_id);
 
       if (!user_id || !user) {
         return res.status(404).json({ message: 'user not found' });
       }
 
-      await CommentModel.create({ author, body, userID: user._id });
+      await CommentModel.create({ author, body, userID: user._id, photo: photo });
       return res.status(201).json({ message: 'comment created' });
     } catch (error) {
       return res.status(500).json({ error: error });
@@ -81,7 +81,7 @@ class CommentsController {
   public async update(req: Request, res: Response) {
     try {
       const { user_id, comment_id } = req.params;
-      const { author, body } = req.body;
+      const { author, body, photo } = req.body;
       const user = await UserModel.findById(user_id);
 
       if (!user) {
@@ -99,7 +99,7 @@ class CommentsController {
 
       await CommentModel.updateOne(
         { _id: comment_id, userID: user_id },
-        { author, body }
+        { author, body, photo }
       );
 
       return res.status(200).json({ message: 'Comment updated' });
