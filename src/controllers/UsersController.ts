@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { UserModel } from '../models/UsersModel';
+import { createPasswordHash } from '../utils/createPasswordHash';
 
 class UsersController {
   public async showAll(req: Request, res: Response) {
@@ -40,11 +41,13 @@ class UsersController {
       if (userEmail) {
         return res.status(402).json({ message: 'Email already exists' });
       }
-      
+
+      const encodedPassword = await createPasswordHash(password)
+
       const newUser = await UserModel.create({
         name: name,
         email: email,
-        password: password,
+        password: encodedPassword,
         photo: photo
       });
 
