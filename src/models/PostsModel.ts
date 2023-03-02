@@ -22,9 +22,7 @@ const PostSchema = new mongoose.Schema({
       required: true,
       ref: 'Categories',
   },
-  tags: {
-    type: [String]
-  },
+  
   emphasis: {
     type: Boolean,
     required: false,
