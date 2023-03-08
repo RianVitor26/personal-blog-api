@@ -12,3 +12,7 @@ export const createPasswordHash = async (password: string): Promise<string> => {
         });
     });
 };
+
+export const comparePassword = async (password: string, user: string) => {
+    bcrypt.compare(password, user)
+}

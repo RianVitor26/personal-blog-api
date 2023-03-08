@@ -1,12 +1,12 @@
 import { Router } from 'express'
 import { usersController } from '../controllers/UsersController' 
-import AuthMiddleware from '../middlewares/AuthMiddleware';
+import { Auth } from '../middlewares/AuthMiddleware';
 
 const UsersRoute: Router = Router()
 
 UsersRoute.get('/users', usersController.showAll)
 
-UsersRoute.use(AuthMiddleware);
+UsersRoute.use(Auth.isAuthenticated);
 
 UsersRoute.get('/users/:id', usersController.showOne)
 UsersRoute.post('/users', usersController.create)
