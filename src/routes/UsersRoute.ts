@@ -1,9 +1,13 @@
 import { Router } from 'express'
 import { usersController } from '../controllers/UsersController' 
+import AuthMiddleware from '../middlewares/AuthMiddleware';
 
 const UsersRoute: Router = Router()
 
 UsersRoute.get('/users', usersController.showAll)
+
+UsersRoute.use(AuthMiddleware);
+
 UsersRoute.get('/users/:id', usersController.showOne)
 UsersRoute.post('/users', usersController.create)
 UsersRoute.put('/users/:id', usersController.update)
