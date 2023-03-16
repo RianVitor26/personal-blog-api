@@ -1,10 +1,12 @@
 import { Router } from 'express'
+import { SessionsController } from '../controllers/SessionsController';
 import { usersController } from '../controllers/UsersController' 
 import { Auth } from '../middlewares/AuthMiddleware';
 
 const UsersRoute: Router = Router()
 
 UsersRoute.get('/users', usersController.showAll)
+UsersRoute.post('sessions', SessionsController.create)
 
 UsersRoute.use(Auth.isAuthenticated);
 
