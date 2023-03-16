@@ -1,8 +1,8 @@
 import { UserModel } from "../models/UsersModel";
-import { comparePassword } from "../utils/auth";
 import { auth } from "../config/auth";
 import jwt from 'jsonwebtoken'
 import { Request, Response } from "express";
+import { comparePassword } from "../utils/auth";
 export class SessionsController {
     public static async create(req: Request, res: Response) {
         try {
@@ -15,6 +15,10 @@ export class SessionsController {
 
             if (!user) {
                 return res.status(404).json()
+            }
+
+            if (!comparePassword(password, user)) {
+                return res.status(401).json({ message: 'password or email incorrect'})
             }
 
             const { id } = user
