@@ -6,9 +6,8 @@ import { Auth } from '../middlewares/AuthMiddleware';
 const UsersRoute: Router = Router()
 
 UsersRoute.get('/users', usersController.showAll)
-UsersRoute.post('sessions', SessionsController.create)
 
-UsersRoute.use(Auth.isAuthenticated);
+
 
 UsersRoute.get('/users/:id', usersController.showOne)
 UsersRoute.post('/users', usersController.create)

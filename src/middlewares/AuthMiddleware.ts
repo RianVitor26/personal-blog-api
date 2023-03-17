@@ -22,7 +22,8 @@ export class Auth{
       if (!decoded) {
         return res.status(401).json('Failed to verify token');
       }
-
+      let { id } = req.body
+       id  = decoded;
       return next()
       
     } catch (error) {
