@@ -5,7 +5,7 @@ API REST para blogs em geral
 ## 📋 Pré-requisitos
 
 * Instalar o [Node.js](https://nodejs.org/en/download/) para rodar o JavaScript no back-end
-* Intalar o [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable) para gerenciar as dependências
+* Intalar o [Yarn](https://yarnpkg.com/) para gerenciar as dependências
 
 ```bash
 # instalação do Yarn
@@ -31,10 +31,10 @@ API REST para blogs em geral
    $ git push origin nomeBranch
 ```
 
-## 🛠️ Desenvolvendo com
+## 🛠️ Technologies
 * [Node.js](https://nodejs.org/en/docs)
-* [Express.js](https://expressjs.com/pt-br/)
-* [Yarn](https://yarnpkg.com/)
+* [Express.js](https://expressjs.com//)
+* [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
 * [TypeScript](https://www.typescriptlang.org/docs/)
 * [MongoDB](https://www.mongodb.com/)
 * [Mongoose](https://mongoosejs.com/)
@@ -47,4 +47,4 @@ API REST para blogs em geral
 
 ## 📄 Licença
 
-Este projeto está sob a licença (MIT) - veja o arquivo [MIT.md](https://github.com/RianVitor26/BlogR-API/blob/main/LICENSE) para detalhes.
+Este projeto está sob a licença (MIT) - veja o arquivo [MIT.md](https://github.com/RianVitor26/blog-api/blob/main/LICENSE) para detalhes.
