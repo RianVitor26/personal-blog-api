@@ -1,8 +1,7 @@
 # Blog API
+API REST para blog em geral
 
-Estou criando uma API REST para servir o meu blog.
-
-## 📋 Pré-requisitos, caso queira contribuir
+## 📋 Pré-requisitos
 
 * Instalar o [Node.js](https://nodejs.org/en/download/) para rodar o JavaScript no back-end
 * Intalar o [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable) para gerenciar as dependências
@@ -31,9 +30,9 @@ Estou criando uma API REST para servir o meu blog.
    $ git push origin nomeBranch
 ```
 
-## 🛠️ Desenvolvendo com
-* [Node.js](http://www.dropwizard.io/1.0.2/docs/)
-* [Express.js](https://www.typescriptlang.org/docs/)
+## 🛠️ Technologies
+* [Node.js](https://nodejs.org/en/docs)
+* [Express.js](https://expressjs.com//)
 * [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
 * [TypeScript](https://www.typescriptlang.org/docs/)
 * [MongoDB](https://www.mongodb.com/)
