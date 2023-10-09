@@ -1,10 +1,11 @@
 # Blog API
-API REST para blog em geral
+
+API REST para blogs em geral
 
 ## 📋 Pré-requisitos
 
 * Instalar o [Node.js](https://nodejs.org/en/download/) para rodar o JavaScript no back-end
-* Intalar o [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable) para gerenciar as dependências
+* Intalar o [Yarn](https://yarnpkg.com/) para gerenciar as dependências
 
 ```bash
 # instalação do Yarn
@@ -41,9 +42,9 @@ API REST para blog em geral
 * [Prettier](https://prettier.io/)
 * [Insomnia](https://insomnia.rest/)
 
-## ✒️ Autores
-* [Rian Vitor](https://github.com/RianVitor26)
+## Authors 🤵🏽
+<img src="https://avatars.githubusercontent.com/u/77061521?v=4" width=115>
 
 ## 📄 Licença
 
-Este projeto está sob a licença (MIT) - veja o arquivo [MIT.md](https://github.com/RianVitor26/BlogR-API/blob/main/LICENSE) para detalhes.
+Este projeto está sob a licença (MIT) - veja o arquivo [MIT.md](https://github.com/RianVitor26/blog-api/blob/main/LICENSE) para detalhes.
