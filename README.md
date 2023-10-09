@@ -1,8 +1,8 @@
 # Blog API
 
-Estou criando uma API REST para servir o meu blog.
+API REST para blogs em geral
 
-## 📋 Pré-requisitos, caso queira contribuir
+## 📋 Pré-requisitos
 
 * Instalar o [Node.js](https://nodejs.org/en/download/) para rodar o JavaScript no back-end
 * Intalar o [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable) para gerenciar as dependências
@@ -32,9 +32,9 @@ Estou criando uma API REST para servir o meu blog.
 ```
 
 ## 🛠️ Desenvolvendo com
-* [Node.js](http://www.dropwizard.io/1.0.2/docs/)
-* [Express.js](https://www.typescriptlang.org/docs/)
-* [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
+* [Node.js](https://nodejs.org/en/docs)
+* [Express.js](https://expressjs.com/pt-br/)
+* [Yarn](https://yarnpkg.com/)
 * [TypeScript](https://www.typescriptlang.org/docs/)
 * [MongoDB](https://www.mongodb.com/)
 * [Mongoose](https://mongoosejs.com/)
@@ -42,8 +42,8 @@ Estou criando uma API REST para servir o meu blog.
 * [Prettier](https://prettier.io/)
 * [Insomnia](https://insomnia.rest/)
 
-## ✒️ Autores
-* [Rian Vitor](https://github.com/RianVitor26)
+## Authors 🤵🏽
+<img src="https://avatars.githubusercontent.com/u/77061521?v=4" width=115>
 
 ## 📄 Licença
 
